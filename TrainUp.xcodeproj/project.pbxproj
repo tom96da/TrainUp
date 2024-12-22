@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5AD506402D16B31200E43865 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD5063F2D16B31200E43865 /* Localizable.xcstrings */; };
+		5AD5065E2D17229500E43865 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD5065D2D17229500E43865 /* WidgetKit.framework */; };
+		5AD506602D17229500E43865 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD5065F2D17229500E43865 /* SwiftUI.framework */; };
+		5AD506712D17229700E43865 /* TrainUpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5AD5065B2D17229500E43865 /* TrainUpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5AD505F92D168B8600E43865 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +28,65 @@
 			remoteGlobalIDString = 5AD505E52D168B8500E43865;
 			remoteInfo = TrainUp;
 		};
+		5AD5066F2D17229700E43865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD505DE2D168B8500E43865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AD5065A2D17229500E43865;
+			remoteInfo = TrainUpWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5AD506762D17229700E43865 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5AD506712D17229700E43865 /* TrainUpWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5AD505E62D168B8500E43865 /* TrainUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD505F82D168B8600E43865 /* TrainUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD506022D168B8600E43865 /* TrainUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD5063F2D16B31200E43865 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5AD5065B2D17229500E43865 /* TrainUpWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TrainUpWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD5065D2D17229500E43865 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5AD5065F2D17229500E43865 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5AD506722D17229700E43865 /* Exceptions for "TrainUpWidget" folder in "TrainUpWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */;
+		};
+		5AD506862D186D1D00E43865 /* Exceptions for "TrainUp" folder in "TrainUpWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Item.swift,
+				TrainUpApp.swift,
+				Views/ContentView.swift,
+				Views/SettingsView.swift,
+			);
+			target = 5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5AD505E82D168B8500E43865 /* TrainUp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5AD506862D186D1D00E43865 /* Exceptions for "TrainUp" folder in "TrainUpWidgetExtension" target */,
+			);
 			path = TrainUp;
 			sourceTree = "<group>";
 		};
@@ -43,6 +98,14 @@
 		5AD506052D168B8600E43865 /* TrainUpUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TrainUpUITests;
+			sourceTree = "<group>";
+		};
+		5AD506612D17229500E43865 /* TrainUpWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5AD506722D17229700E43865 /* Exceptions for "TrainUpWidget" folder in "TrainUpWidgetExtension" target */,
+			);
+			path = TrainUpWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,15 +132,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5AD506582D17229500E43865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD506602D17229500E43865 /* SwiftUI.framework in Frameworks */,
+				5AD5065E2D17229500E43865 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5AD505DD2D168B8500E43865 = {
 			isa = PBXGroup;
 			children = (
+				5AD5063F2D16B31200E43865 /* Localizable.xcstrings */,
 				5AD505E82D168B8500E43865 /* TrainUp */,
 				5AD505FB2D168B8600E43865 /* TrainUpTests */,
 				5AD506052D168B8600E43865 /* TrainUpUITests */,
+				5AD506612D17229500E43865 /* TrainUpWidget */,
+				5AD5065C2D17229500E43865 /* Frameworks */,
 				5AD505E72D168B8500E43865 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +163,18 @@
 				5AD505E62D168B8500E43865 /* TrainUp.app */,
 				5AD505F82D168B8600E43865 /* TrainUpTests.xctest */,
 				5AD506022D168B8600E43865 /* TrainUpUITests.xctest */,
+				5AD5065B2D17229500E43865 /* TrainUpWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5AD5065C2D17229500E43865 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AD5065D2D17229500E43865 /* WidgetKit.framework */,
+				5AD5065F2D17229500E43865 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +187,12 @@
 				5AD505E22D168B8500E43865 /* Sources */,
 				5AD505E32D168B8500E43865 /* Frameworks */,
 				5AD505E42D168B8500E43865 /* Resources */,
+				5AD506762D17229700E43865 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5AD506702D17229700E43865 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5AD505E82D168B8500E43865 /* TrainUp */,
@@ -163,6 +250,29 @@
 			productReference = 5AD506022D168B8600E43865 /* TrainUpUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AD506732D17229700E43865 /* Build configuration list for PBXNativeTarget "TrainUpWidgetExtension" */;
+			buildPhases = (
+				5AD506572D17229500E43865 /* Sources */,
+				5AD506582D17229500E43865 /* Frameworks */,
+				5AD506592D17229500E43865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5AD505E82D168B8500E43865 /* TrainUp */,
+				5AD506612D17229500E43865 /* TrainUpWidget */,
+			);
+			name = TrainUpWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = TrainUpWidgetExtension;
+			productReference = 5AD5065B2D17229500E43865 /* TrainUpWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +294,9 @@
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = 5AD505E52D168B8500E43865;
 					};
+					5AD5065A2D17229500E43865 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 				};
 			};
 			buildConfigurationList = 5AD505E12D168B8500E43865 /* Build configuration list for PBXProject "TrainUp" */;
@@ -192,6 +305,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 5AD505DD2D168B8500E43865;
 			minimizedProjectReferenceProxies = 1;
@@ -203,6 +317,7 @@
 				5AD505E52D168B8500E43865 /* TrainUp */,
 				5AD505F72D168B8600E43865 /* TrainUpTests */,
 				5AD506012D168B8600E43865 /* TrainUpUITests */,
+				5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -212,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD506402D16B31200E43865 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +339,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5AD506002D168B8600E43865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AD506592D17229500E43865 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +376,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5AD506572D17229500E43865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = 5AD505E52D168B8500E43865 /* TrainUp */;
 			targetProxy = 5AD506032D168B8600E43865 /* PBXContainerItemProxy */;
+		};
+		5AD506702D17229700E43865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */;
+			targetProxy = 5AD5066F2D17229700E43865 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -328,6 +463,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -384,6 +520,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -399,6 +536,10 @@
 				DEVELOPMENT_TEAM = 55HRBZ3M9G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "アプリがバックグラウンドでも最寄り駅を表示するために位置情報を使用します。";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "バックグラウンドで最寄り駅を表示するために位置情報を使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "最寄り駅を検索するために位置情報を使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -408,7 +549,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tom96da.watsxn.TrainUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -428,6 +569,10 @@
 				DEVELOPMENT_TEAM = 55HRBZ3M9G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "アプリがバックグラウンドでも最寄り駅を表示するために位置情報を使用します。";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "バックグラウンドで最寄り駅を表示するために位置情報を使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "最寄り駅を検索するために位置情報を使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -437,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tom96da.watsxn.TrainUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -518,6 +663,60 @@
 			};
 			name = Release;
 		};
+		5AD506742D17229700E43865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55HRBZ3M9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrainUpWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrainUpWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tom96da.watsxn.TrainUp.TrainUpWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5AD506752D17229700E43865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55HRBZ3M9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrainUpWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrainUpWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tom96da.watsxn.TrainUp.TrainUpWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +752,15 @@
 			buildConfigurations = (
 				5AD506132D168B8600E43865 /* Debug */,
 				5AD506142D168B8600E43865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AD506732D17229700E43865 /* Build configuration list for PBXNativeTarget "TrainUpWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AD506742D17229700E43865 /* Debug */,
+				5AD506752D17229700E43865 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
