@@ -13,6 +13,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var location: CLLocation?
     @Published var authorizationStatus: CLAuthorizationStatus
     private var locationUpdateTimer: Timer?
+    private let sharedDefaults = UserDefaults(suiteName: "group.com.yourcompany.TrainUp") // 共有UserDefaultsを追加
 
     override init() {
         self.locationManager = CLLocationManager()
@@ -55,7 +56,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         guard let newLocation = locations.last else { return }
         self.location = newLocation
         print("Location updated: \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
-        UserDefaults.standard.set([newLocation.coordinate.latitude, newLocation.coordinate.longitude], forKey: "LastKnownLocation")
+        sharedDefaults?.set([newLocation.coordinate.latitude, newLocation.coordinate.longitude], forKey: "LastKnownLocation") // 共有UserDefaultsに保存
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

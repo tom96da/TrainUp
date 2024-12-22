@@ -15,6 +15,8 @@ struct StationWidgetEntry: TimelineEntry {
 }
 
 struct StationWidgetProvider: TimelineProvider {
+    private let sharedDefaults = UserDefaults(suiteName: "group.com.tom96da.watsxn.TrainUp")
+
     func placeholder(in context: Context) -> StationWidgetEntry {
         StationWidgetEntry(date: Date(), station: nil)
     }
@@ -26,25 +28,14 @@ struct StationWidgetProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<StationWidgetEntry>) -> Void) {
         let currentDate = Date()
-        let updateFrequency = UserDefaults.standard.double(forKey: "updateFrequency")
+        let updateFrequency = sharedDefaults?.double(forKey: "updateFrequency") ?? 60.0
 
-        if let stored = UserDefaults.standard.array(forKey: "LastKnownLocation") as? [Double],
-           stored.count == 2 {
-            let latitude = stored[0]
-            let longitude = stored[1]
-            print("LastKnownLocation: \(latitude), \(longitude)")
-            APIService.fetchNearestStations(latitude: latitude, longitude: longitude) { result in
-                let station: Station?
-                switch result {
-                case .success(let stations):
-                    station = stations.first
-                case .failure:
-                    station = nil
-                }
-                let entry = StationWidgetEntry(date: currentDate, station: station)
-                let timeline = Timeline(entries: [entry], policy: .after(currentDate.addingTimeInterval(updateFrequency)))
-                completion(timeline)
-            }
+        if let data = sharedDefaults?.data(forKey: "widgetStations"),
+           let stations = try? JSONDecoder().decode([Station].self, from: data),
+           let station = stations.first {
+            let entry = StationWidgetEntry(date: currentDate, station: station)
+            let timeline = Timeline(entries: [entry], policy: .after(currentDate.addingTimeInterval(updateFrequency)))
+            completion(timeline)
         } else {
             let entry = StationWidgetEntry(date: currentDate, station: nil)
             let timeline = Timeline(entries: [entry], policy: .after(currentDate.addingTimeInterval(updateFrequency)))
@@ -61,7 +52,11 @@ struct TrainUpWidgetEntryView: View {
             VStack {
                 Text(station.name)
                     .font(.headline)
+                    .padding(.bottom, 1)
                 Text(station.line)
+                    .font(.subheadline)
+                Text(station.distance)
+                    .font(.caption)
             }
             .containerBackground(.fill.tertiary, for: .widget)
         } else {
@@ -78,6 +73,7 @@ struct TrainUpWidget: Widget {
         StaticConfiguration(kind: kind, provider: StationWidgetProvider()) { entry in
             TrainUpWidgetEntryView(entry: entry)
         }
+        .contentMarginsDisabled()
         .configurationDisplayName("TrainUp Widget")
         .description("Display nearest station info")
         .supportedFamilies([

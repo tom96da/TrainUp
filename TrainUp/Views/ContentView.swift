@@ -18,6 +18,7 @@ struct ContentView: View {
     @AppStorage("username") private var username: String = ""
     @AppStorage("updateFrequency") private var updateFrequency: Double = 60.0
     @State private var cancellable: AnyCancellable?
+    private let sharedDefaults = UserDefaults(suiteName: "group.com.tom96da.watsxn.TrainUp")
 
     var body: some View {
         NavigationView {
@@ -121,7 +122,7 @@ struct ContentView: View {
 
     private func saveStationsForWidget(_ stations: [Station]) {
         if let encoded = try? JSONEncoder().encode(stations) {
-            UserDefaults.standard.set(encoded, forKey: "widgetStations")
+            sharedDefaults?.set(encoded, forKey: "widgetStations") // 共有UserDefaultsに保存
         }
     }
 }
