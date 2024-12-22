@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var currentStationIndex = 0
     @State private var dragOffset: CGSize = .zero
     @EnvironmentObject var languageManager: LanguageManager
+    @AppStorage("username") private var username: String = ""
 
     var body: some View {
         NavigationView {
@@ -44,7 +45,7 @@ struct ContentView: View {
                         }
                     )
 
-                if !stations.isEmpty {
+                if (!stations.isEmpty) {
                     VStack {
                         Text(stations[currentStationIndex].name)
                             .font(.title)

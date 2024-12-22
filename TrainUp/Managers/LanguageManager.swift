@@ -16,7 +16,7 @@ class LanguageManager: ObservableObject {
             NotificationCenter.default.post(name: .languageChanged, object: nil)
         }
     }
-    
+
     func updateLanguage(to language: String) {
         selectedLanguage = language
     }

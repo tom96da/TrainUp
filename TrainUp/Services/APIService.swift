@@ -10,7 +10,8 @@ class APIService {
     static let baseURL = "https://watsxn.tom96da.com/trainup/api/v1/geo"
 
     static func fetchNearestStations(latitude: Double, longitude: Double, completion: @escaping (Result<[Station], Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)?lat=\(latitude)&lon=\(longitude)") else {
+        let username = UserDefaults.standard.string(forKey: "username") ?? "guest"
+        guard let url = URL(string: "\(baseURL)?lat=\(latitude)&lon=\(longitude)&user=\(username)") else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
@@ -35,7 +36,7 @@ class APIService {
                 let decoder = JSONDecoder()
                 let stationResponse = try decoder.decode(StationResponse.self, from: data)
                 completion(.success(stationResponse.stations))
-                print("Staions list: \(stationResponse.stations.map { $0.name })")
+                print("Stations list: \(stationResponse.stations.map { $0.name })")
             } catch {
                 print("Error decoding JSON: \(error)")
                 completion(.failure(error))

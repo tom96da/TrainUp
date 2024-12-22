@@ -73,9 +73,12 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Models/Item.swift,
+				RootView.swift,
+				SplashView.swift,
 				TrainUpApp.swift,
 				Views/ContentView.swift,
 				Views/SettingsView.swift,
+				Views/WelcomeView.swift,
 			);
 			target = 5AD5065A2D17229500E43865 /* TrainUpWidgetExtension */;
 		};
@@ -536,6 +539,7 @@
 				DEVELOPMENT_TEAM = 55HRBZ3M9G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TrainUp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "アプリがバックグラウンドでも最寄り駅を表示するために位置情報を使用します。";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "バックグラウンドで最寄り駅を表示するために位置情報を使用します。";
@@ -569,6 +573,7 @@
 				DEVELOPMENT_TEAM = 55HRBZ3M9G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TrainUp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "アプリがバックグラウンドでも最寄り駅を表示するために位置情報を使用します。";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "バックグラウンドで最寄り駅を表示するために位置情報を使用します。";

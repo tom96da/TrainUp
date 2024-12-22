@@ -31,6 +31,16 @@
         }
       }
     },
+    "Continue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すすむ"
+          }
+        }
+      }
+    },
     "Distance" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,6 +58,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "English"
+          }
+        }
+      }
+    },
+    "Enter your username" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザー名を入力してください"
           }
         }
       }
@@ -110,6 +130,16 @@
         }
       }
     },
+    "Save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
     "Settings" : {
       "localizations" : {
         "ja" : {
@@ -140,12 +170,45 @@
         }
       }
     },
+    "TrainUp" : {
+      "shouldTranslate" : false
+    },
     "Update Frequency" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新間隔"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザー"
+          }
+        }
+      }
+    },
+    "Username" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザー名"
+          }
+        }
+      }
+    },
+    "Welcome" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ようこそ"
           }
         }
       }

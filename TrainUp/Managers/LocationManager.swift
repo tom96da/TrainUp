@@ -46,6 +46,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         locationUpdateTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
             self.requestLocation()
         }
+        if let timer = locationUpdateTimer {
+            RunLoop.main.add(timer, forMode: .common)
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

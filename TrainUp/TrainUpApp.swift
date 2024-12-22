@@ -10,10 +10,10 @@ import SwiftUI
 @main
 struct TrainUpApp: App {
     @StateObject private var languageManager = LanguageManager()
-    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
                 .environment(\.locale, Locale(identifier: languageManager.selectedLanguage))
                 .environmentObject(languageManager)
         }

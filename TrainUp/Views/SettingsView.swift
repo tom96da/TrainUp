@@ -9,9 +9,21 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var languageManager: LanguageManager
-
+    @AppStorage("username") var username: String = ""
+    @State private var tempUsername: String = ""
     var body: some View {
         Form {
+            Section(header: Text("User")) {
+                HStack {
+                    TextField("Username", text: $tempUsername)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button("Save") {
+                        if (!tempUsername.isEmpty) {
+                            username = tempUsername
+                        }
+                    }
+                }
+            }
             Section(header: Text("Language")) {
                 Picker("Language", selection: $languageManager.selectedLanguage) {
                     Text("English").tag("en")
@@ -43,6 +55,9 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .onAppear {
+            tempUsername = username // ユーザー名を初期化
+        }
     }
 
     private func openAppSettings() {
