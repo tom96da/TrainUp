@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 struct ContentView: View {
     @StateObject private var locationManager = LocationManager()
@@ -15,6 +16,8 @@ struct ContentView: View {
     @State private var dragOffset: CGSize = .zero
     @EnvironmentObject var languageManager: LanguageManager
     @AppStorage("username") private var username: String = ""
+    @AppStorage("updateFrequency") private var updateFrequency: Double = 60.0
+    @State private var cancellable: AnyCancellable?
 
     var body: some View {
         NavigationView {
@@ -80,23 +83,45 @@ struct ContentView: View {
             })
             .onAppear {
                 locationManager.requestLocationAuthorization()
+                startPeriodicFetch()
+            }
+            .onChange(of: updateFrequency) { oldValue, newValue in
+                startPeriodicFetch()
             }
         }
     }
 
+    private func startPeriodicFetch() {
+        cancellable?.cancel()
+        cancellable = Timer.publish(every: updateFrequency, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                if let loc = locationManager.location {
+                    print("Periodic fetch...")
+                    fetchNearestStations(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+                }
+            }
+        print("set timer for \(updateFrequency) seconds")
+    }
+
     private func fetchNearestStations(latitude: Double, longitude: Double) {
-        print("ContentView: fetchNearestStations")
-        print("Current location: \(latitude), \(longitude)")
         APIService.fetchNearestStations(latitude: latitude, longitude: longitude) { result in
             switch result {
             case .success(let fetchedStations):
                 DispatchQueue.main.async {
                     self.stations = fetchedStations
                     self.currentStationIndex = 0
+                    saveStationsForWidget(fetchedStations)
                 }
             case .failure(let error):
                 print("Error fetching stations: \(error)")
             }
+        }
+    }
+
+    private func saveStationsForWidget(_ stations: [Station]) {
+        if let encoded = try? JSONEncoder().encode(stations) {
+            UserDefaults.standard.set(encoded, forKey: "widgetStations")
         }
     }
 }
